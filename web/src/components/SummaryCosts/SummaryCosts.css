@@ -1,0 +1,28 @@
+.summary-cost-item {
+    display: flex;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    flex: 1 0;
+    flex-direction: column;
+    gap: 10px;
+    align-content: space-between;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.im-tired-of-this-grandpa {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 0 1 auto;
+    overflow-y: auto;
+}
+
+.summary-cost-header {
+    display: flex;
+    text-align: left;
+}
+
+.summary-item::-webkit-scrollbar {
+    display: none;
+}

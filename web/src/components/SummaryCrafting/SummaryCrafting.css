@@ -1,0 +1,29 @@
+.summary-crafting-item {
+    display: flex;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    flex: 1 0;
+    overflow-y: auto;
+    gap: 10px;
+    flex-direction: column;
+    align-content: space-between;
+    border-radius: 10px;
+}
+
+.well-thats-too-damn-bad {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 0 1 auto;
+    overflow-y: auto;
+}
+
+.summary-crafting-header {
+    display: flex;
+    text-align: left;
+}
+
+.summary-item::-webkit-scrollbar {
+    display: none;
+    width: 10px;
+}

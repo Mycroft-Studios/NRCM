@@ -1,0 +1,10 @@
+.required-item {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    padding-top: 5px
+}
+
+.required-item-image {
+    max-width: 30px;
+}

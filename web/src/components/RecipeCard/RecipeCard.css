@@ -1,0 +1,64 @@
+.recipe-card {
+    display: flex;
+    background-color: var(--secondary-color);
+    padding: 0.75rem;
+    border-radius: 5px;
+}
+
+.recipe-card:hover{
+    background-color: var(--secondary-color-hover);
+}
+
+.recipe-image-container {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 8rem;
+    background-color: var(--primary-color);
+    border-radius: 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--image-border-color);
+}
+
+.recipe-name {
+    align-self: center;
+    padding: 5px 7px;
+    font-size: medium;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity 0.3s;
+}
+
+.recipe-image {
+    flex: 0 0 6rem;
+    max-width: 6rem;
+    align-self: center;
+}
+
+.recipe-crafting-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 10px
+}
+
+.recipe-crafting-amount-container {
+    padding: 4px;
+}
+
+.amount-input-style {
+    display: flex;
+    width: 36%;
+    border-radius: 1px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-style: solid;
+    padding: 4px;
+}
+
+.required-items-container {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 1;
+    overflow-y: auto;
+}

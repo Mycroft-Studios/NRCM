@@ -1,0 +1,15 @@
+.search-bar-container {
+    display: flex;
+    align-items: flex-start;
+    height: 30px;
+}
+
+.search-bar-style {
+    border-style: solid;
+    height: 100%;
+    padding-left: 5px;
+    background-color: var(--secondary-color);
+    border-radius: 3px;
+    color: var(--text-color);
+    width: 33%;
+}

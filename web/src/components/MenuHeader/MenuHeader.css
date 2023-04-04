@@ -1,0 +1,19 @@
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0;
+}
+
+.menu-header--close{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--close-button-color);
+  border: none;
+  cursor: pointer;
+}
+
+.menu-header--close:hover{
+  background-color: var(--close-button-hover-color);
+  cursor: pointer;
+}

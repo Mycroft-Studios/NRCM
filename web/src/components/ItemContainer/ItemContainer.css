@@ -1,0 +1,6 @@
+.item-container {
+    display: flex;
+    flex: 6 0;
+    gap: 10px;
+    overflow-y: hidden;
+}

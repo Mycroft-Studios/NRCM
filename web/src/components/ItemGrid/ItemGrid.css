@@ -1,0 +1,25 @@
+.item-grid {
+    display: grid;
+    background-color: var(--primary-color);
+    grid-auto-rows: fit-content(400px);
+    flex: 8 0;
+    gap: 1rem;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+.item-grid::-webkit-scrollbar {
+    display: none;
+}
+
+@media(min-width: 1600px) {
+    .item-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(min-width: 1920px) {
+    .item-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

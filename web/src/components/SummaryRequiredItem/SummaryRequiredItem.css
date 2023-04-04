@@ -1,0 +1,20 @@
+.summary-required-item-container {
+    display: flex;
+    background-color: var(--primary-color);
+    flex-basis: 100%;
+    border-radius: 5px;
+    align-items: center;
+    flex: 0 0 auto;
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.summary-item-image {
+    max-width: 30px;
+    max-height: 30px;
+    margin-right: 10px;
+}
+
+.red-text {
+    color: var(--invalid-text-color);
+}

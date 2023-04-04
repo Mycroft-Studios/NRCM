@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'montserrat', sans-serif;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.nui-wrapper {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container {
+  background: var(--primary-color);
+  border-radius: 10px;
+  width: 75%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+  padding: 10px 15px;
+  justify-content: start;
+  gap: 15px;
+}
+
+.submit-button {
+  background: var(--submit-color);
+  border: none;
+  border-radius: 5px;
+  color: var(--submit-text-color);
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+}
+
+.submit-button:hover {
+  background: var(--submit-hover-color);
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
