@@ -25,7 +25,7 @@ const MenuHeader = ({ label }: MenuHeaderProps) => {
       <button
         className="menu-header--close"
         onClick={() =>
-          fetchNui("closeCraftingMenu")
+          fetchNui("closeCraftingMenu", null, {})
         }
       />
     </div>

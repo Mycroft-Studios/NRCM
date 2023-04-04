@@ -33,8 +33,6 @@ debugData([
   },
 ]);
 
-console.log('Setting debug data...')
-
 debugData([
   {
     action: "setShopData",
