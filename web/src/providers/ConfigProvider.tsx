@@ -37,7 +37,7 @@ const DebugConfig: Config = {
     CloseButtonColor: "#e74c3c",
     CloseButtonHoverColor: "#e43f2d",
   },
-  imagePath: "../assets/",
+  imagePath: "./assets/",
 };
 
 const ConfigCtx = createContext<{ config: Config; setConfig: (config: Config) => void } | null>(null);
