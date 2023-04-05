@@ -1,5 +1,5 @@
-import { Context, createContext, useContext, useEffect, useState } from 'react';
-import { fetchNui } from '../utils/fetchNui';
+import { Context, createContext, useContext, useEffect, useState } from "react";
+import { fetchNui } from "../utils/fetchNui";
 
 interface Styles {
   PrimaryColor?: string;
@@ -15,8 +15,8 @@ interface Styles {
 }
 
 interface Config {
-    imagePath: string;
-    Styles?: Styles;
+  imagePath: string;
+  Styles?: Styles;
 }
 
 interface ConfigCtxValue {
@@ -40,43 +40,57 @@ const DebugConfig: Config = {
   imagePath: "./assets/",
 };
 
-const ConfigCtx = createContext<{ config: Config; setConfig: (config: Config) => void } | null>(null);
+const ConfigCtx = createContext<{
+  config: Config;
+  setConfig: (config: Config) => void;
+} | null>(null);
 
-const ConfigProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [config, setConfig] = useState<Config>({imagePath: '', Styles: {}});
+const ApplyStyles = (styles: Styles) => {
+  const root = document.querySelector(":root") as HTMLElement;
+  if (styles.PrimaryColor) {
+    root.style.setProperty("--primary-color", styles.PrimaryColor);
+  }
+  if (styles.SecondaryColor) {
+    root.style.setProperty("--secondary-color", styles.SecondaryColor);
+  }
+  if (styles.TextColor) {
+    root.style.setProperty("--text-color", styles.TextColor);
+  }
+  if (styles.InvalidTextColor) {
+    root.style.setProperty("--invalid-text-color", styles.InvalidTextColor);
+  }
+  if (styles.SubmitColor) {
+    root.style.setProperty("--submit-color", styles.SubmitColor);
+  }
+  if (styles.SubmitHoverColor) {
+    root.style.setProperty("--submit-hover-color", styles.SubmitHoverColor);
+  }
+  if (styles.SubmitTextColor) {
+    root.style.setProperty("--submit-text-color", styles.SubmitTextColor);
+  }
+};
 
+const ConfigProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [config, setConfig] = useState<Config>({ imagePath: "", Styles: {} });
+
+  // Fetch and apply config
   useEffect(() => {
-      fetchNui<Config>("getConfig", null, DebugConfig).then((data) => setConfig(data));
+    fetchNui<Config>("getConfig", null, DebugConfig).then((data) => {
+      setConfig(data);
+      if (data.Styles) ApplyStyles(data.Styles);
+    });
   }, []);
 
-  useEffect(() => {
-    const root = document.querySelector(":root") as HTMLElement;
-    if (config.Styles?.PrimaryColor) {
-      root.style.setProperty("--primary-color", config.Styles.PrimaryColor);
-    }
-    if (config.Styles?.SecondaryColor) {
-      root.style.setProperty("--secondary-color", config.Styles.SecondaryColor);
-    }
-    if (config.Styles?.TextColor) {
-      root.style.setProperty("--text-color", config.Styles.TextColor);
-    }
-    if (config.Styles?.InvalidTextColor) {
-      root.style.setProperty("--invalid-text-color", config.Styles.InvalidTextColor);
-    }
-    if (config.Styles?.SubmitColor) {
-      root.style.setProperty("--submit-color", config.Styles.SubmitColor);
-    }
-    if (config.Styles?.SubmitHoverColor) {
-      root.style.setProperty("--submit-hover-color", config.Styles.SubmitHoverColor);
-    }
-    if (config.Styles?.SubmitTextColor) {
-      root.style.setProperty("--submit-text-color", config.Styles.SubmitTextColor);
-    }
-  }, [config.Styles]);
-
-  return <ConfigCtx.Provider value={{ config, setConfig }}>{children}</ConfigCtx.Provider>;
+  return (
+    <ConfigCtx.Provider value={{ config, setConfig }}>
+      {children}
+    </ConfigCtx.Provider>
+  );
 };
 
 export default ConfigProvider;
 
-export const useConfig = () => useContext<ConfigCtxValue>(ConfigCtx as Context<ConfigCtxValue>);
+export const useConfig = () =>
+  useContext<ConfigCtxValue>(ConfigCtx as Context<ConfigCtxValue>);

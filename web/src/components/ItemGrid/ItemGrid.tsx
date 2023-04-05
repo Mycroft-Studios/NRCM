@@ -1,23 +1,21 @@
 import { CraftableItem, RequiredItem } from "../../typings/Items";
+import { useSearch } from "../../providers/SearchProvider";
+import { useShopData } from "../../providers/ShopDataProvider";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import "./ItemGrid.css";
 
-interface ItemGridProps {
-  items: CraftableItem[];
-  currentSearch: string;
-  onAmountUpdate: Function;
-}
-
-const ItemGrid = ({ items, currentSearch, onAmountUpdate }: ItemGridProps) => {
+const ItemGrid = () => {
+  const {searchText} = useSearch();
+  const {items, setItems} = useShopData();
   const filteredItems = items.filter((item: CraftableItem) => {
-    let include = currentSearch === "";
+    let include = searchText === "";
     // If the item name (label) has the search text in it
-    if (item.label.toLowerCase().includes(currentSearch)) {
+    if (item.label.toLowerCase().includes(searchText)) {
       include = true;
     }
     // If any of the items requirements have the search text in the name (label)
     item.requiredItems.map((reqItem: RequiredItem) => {
-      if (reqItem.label.toLowerCase().includes(currentSearch)) {
+      if (reqItem.label.toLowerCase().includes(searchText)) {
         include = true;
       }
     });
@@ -25,8 +23,21 @@ const ItemGrid = ({ items, currentSearch, onAmountUpdate }: ItemGridProps) => {
     return include;
   });
 
-  const itemAmountChangeHandler = (value: number, name: string) => {
-    onAmountUpdate(value, name);
+  const itemAmountChangeHandler = (amountSelected: number, item: string) => {
+    setItems((previousShopItems: CraftableItem[]) => {
+      return previousShopItems.map((shopItem: CraftableItem) => {
+        // if the item name matches the item we are updating
+        if (shopItem.name === item) {
+          // return a new object with the updated amount
+          return {
+            ...shopItem,
+            amountSelected: Math.floor(amountSelected),
+          };
+        }
+        // otherwise return the original item
+        return shopItem;
+      });
+    })
   };
 
   return (

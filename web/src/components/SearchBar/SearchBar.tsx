@@ -1,21 +1,15 @@
+import { useSearch } from "../../providers/SearchProvider";
 import "./SearchBar.css";
 import React, { useState, useEffect } from "react";
 
-interface SearchBarProps {
-  onSearchUpdate: Function;
-}
 
-const SearchBar = ({ onSearchUpdate }: SearchBarProps) => {
-  const [search, setSearch] = useState<string>("");
+const SearchBar = () => {
+  const { setSearchText } = useSearch();
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     e.preventDefault();
-    setSearch(e.target.value);
+    setSearchText(e.target.value.toLowerCase());
   };
-
-  useEffect(() => {
-    onSearchUpdate(search);
-  }, [search, onSearchUpdate]);
 
   return (
     <div className="search-bar-container">

@@ -1,16 +1,15 @@
 import "./SummaryCrafting.css";
 import SummaryRequiredItem from "../SummaryRequiredItem/SummaryRequiredItem";
 import { CraftableItem } from "../../typings/Items";
+import { useShopData } from "../../providers/ShopDataProvider";
 
-interface SummaryCraftingProps {
-    items: CraftableItem[];
-}
+const SummaryCrafting = () => {
 
-const SummaryCrafting = ({ items }: SummaryCraftingProps) => {
+  const {items, labels} = useShopData();
 
   return (
     <div className="summary-crafting-item">
-        <h2 className="summary-crafting-header">Items Crafted</h2>
+        <h2 className="summary-crafting-header">{labels.crafting || 'Items Crafted'}</h2>
         <div className="well-thats-too-damn-bad">
             {items.map((item: CraftableItem) => {
                 const amount = item.amountSelected || 0;

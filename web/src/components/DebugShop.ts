@@ -443,7 +443,12 @@ const DebugShop = () => {
           ],
         },
       ],
-      label: "Pearl's Seafood",
+      labels: {
+        header: "Pearl's Seafood",
+        costs: "Recipe Costs",
+        crafting: "Food Made",
+        submit: "Cook",
+      },
     },
   };
 };

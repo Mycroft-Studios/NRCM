@@ -1,13 +1,12 @@
 import { fetchNui } from "../../utils/fetchNui";
 import { useEffect, useState } from "react";
+import { useShopData } from "../../providers/ShopDataProvider";
 import "./MenuHeader.css";
 
-interface MenuHeaderProps {
-  label: string;
-}
-
-const MenuHeader = ({ label }: MenuHeaderProps) => {
+const MenuHeader = () => {
   const [isHovering, setIsHovering] = useState(false);
+
+  const { labels } = useShopData();
 
   useEffect(() => {
       const mainContainer = document.querySelector('.main-container') as HTMLElement
@@ -21,7 +20,7 @@ const MenuHeader = ({ label }: MenuHeaderProps) => {
 
   return (
     <div className="menu-header" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-      <h1>{label}</h1>
+      <h1>{labels.header}</h1>
       <button
         className="menu-header--close"
         onClick={() =>
