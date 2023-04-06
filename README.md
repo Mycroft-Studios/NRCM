@@ -8,10 +8,10 @@ Check out the demo: https://mkeefeus.github.io/NRCM/
 2. Open the Config file in this resource's home directory.
 3. Adjust the config accordingly, everything should be named appropriately.
 -- Key Points to Step 3:
-	- Make sure the "Image Path" is set to your server's inventory image folder. This is set to QBCore by default.
+	- Make sure the `Image Path` is set to your server's inventory image folder. This is set to QBCore by default.
 	- You can recolor the entire application, you may use HEX or RGB.
-	- Be sure to follow the "Crafting Locations" example to setup all of your menus.
-
+	- Be sure to follow the `Crafting Locations` example to setup all of your menus.
+	- Edit Lines `14` and `20` in the `fxmanifest.lua` to match the framework your using.
 
 -CREDITS-  
 Project Error - Boilerplate  
